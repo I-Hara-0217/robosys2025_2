@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'robosys2025_2'
+package_name = 'saying_sender'
 
 setup(
     name=package_name,

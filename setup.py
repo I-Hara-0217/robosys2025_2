@@ -1,6 +1,10 @@
-from setuptools import setup
+# SPDX-FileCopyrightText: 2025 Ibuki Hara
+# SPDX-License-Identifier: BSD-3-Clause
+
 import os
 from glob import glob
+
+from setuptools import setup
 
 package_name = 'saying_sender'
 
@@ -12,8 +16,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name), glob('launch/*.launch.py')),
-        (os.path.join('share', package_name), ['words.txt']),
+        (os.path.join('share', package_name), glob('launch/*.launch.py'))
     ],
     install_requires=['setuptools'],
     zip_safe=True,

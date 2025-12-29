@@ -22,37 +22,30 @@ class QuotesPublisher(Node):
         if random.randint(1, 99) == 99:
             msg.data = "【大当たり】今日はとても良いことがありそうです！"
         else:
-            # words.txt のファイルパスを指定
-            file_path = os.path.expanduser('~/ros2_ws/src/robosys2025_2/words.txt')
+            # words.txt のファイルパスを指定（フォルダ名を修正）
+            file_path = os.path.expanduser('~/ros2_ws/src/saying_sender/words.txt')
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
                     lines = f.readlines()
                     if lines:
-                        # ファイルの中から一行をランダムにチョイス
                         msg.data = random.choice(lines).strip()
                     else:
                         msg.data = "words.txt が空です。"
             except FileNotFoundError:
                 msg.data = "words.txt が見つかりません。"
 
-        # データをパブリッシュ（送信）
         self.publisher_.publish(msg)
-        # ログに出力
         self.get_logger().info(f'Publish: "{msg.data}"')
 
-    def main(args=None):
-    # ROS 2 の通信機能を初期化
+
+def main(args=None):
     rclpy.init(args=args)
-    # QuotesPublisher のインスタンスを作成
     node = QuotesPublisher()
     try:
-        # ノードをスピン（実行状態を維持）させてタイマーを動かす
         rclpy.spin(node)
     except KeyboardInterrupt:
-        # Ctrl+C で停止した際の処理
         pass
 
-    # ノードを破棄して終了処理を行う
     node.destroy_node()
     rclpy.shutdown()
 

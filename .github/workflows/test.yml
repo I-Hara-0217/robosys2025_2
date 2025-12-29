@@ -1,0 +1,27 @@
+name: test
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Set up ROS 2
+      uses: ros-tooling/setup-ros@v0.7
+      with:
+        required-ros-distributions: jazzy
+
+    - name: Run test
+      run: |
+        mkdir -p ~/ros2_ws/src/saying_sender
+        cp -rf ./* ~/ros2_ws/src/saying_sender/
+        chmod +x ~/ros2_ws/src/saying_sender/test.bash
+        ~/ros2_ws/src/saying_sender/test.bash

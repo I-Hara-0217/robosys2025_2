@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2025 Ibuki Hara
 # SPDX-License-Identifier: BSD-3-Clause
 
-import os
 from glob import glob
+import os
 
 from setuptools import setup
 

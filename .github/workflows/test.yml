@@ -23,5 +23,6 @@ jobs:
       run: |
         mkdir -p ~/ros2_ws/src/saying_sender
         cp -rf ./* ~/ros2_ws/src/saying_sender/
-        chmod +x ~/ros2_ws/src/saying_sender/test.bash
-        ~/ros2_ws/src/saying_sender/test.bash
+        chmod +x ~/ros2_ws/src/saying_sender/test/test.bash
+        cd ~/ros2_ws
+        bash src/saying_sender/test/test.bash

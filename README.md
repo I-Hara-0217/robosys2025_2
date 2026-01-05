@@ -27,8 +27,8 @@ $ ros2 run saying_sender quotes_publisher
 
 注意:`words.txt`を編集した後は、変更を反映させるため、必ずワークスペースのルートディレクトリで以下のコマンドを実行し、ビルドし直してください。
 ```
-colcon build --packages-select saying_sender
-source ~/.bashrc
+$ colcon build --packages-select saying_sender
+$ source ~/.bashrc
 ```
 
 ## 必用なソフトウェア

@@ -10,10 +10,9 @@ ng () {
 res=0
 
 source /opt/ros/jazzy/setup.bash
-cd $HOME/ros2_ws
 
 colcon build --packages-select saying_sender || ng "$LINENO"
-source $HOME/ros2_ws/install/setup.bash
+source install/setup.bash
 
 timeout 10s ros2 run saying_sender quotes_publisher > /tmp/saying_sender.log 2>&1 || true
 
